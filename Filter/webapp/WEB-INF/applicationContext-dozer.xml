@@ -15,7 +15,8 @@
 	<bean id="dozerMapper" class="org.dozer.DozerBeanMapper">
 		<property name="mappingFiles">
 			<list>
-				<value>dozerMapping.xml</value>
+				<value>mappingFromDomainToDTO.xml</value>
+				<value>mappingFromDTOToDomain.xml</value>
 			</list>
 		</property>
 	</bean>
