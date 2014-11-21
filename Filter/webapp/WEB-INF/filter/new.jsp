@@ -4,6 +4,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
+<link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/favicon.ico" />
+
 <!-- 	CSS define -->
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/jquery-ui.css">
 	
@@ -22,7 +24,7 @@
 			<tr>
 				<td colspan="2">Filter information</td>
 			<tr>
-				<td>name:</td>
+				<td>Name:</td>
 				<td><input type="text" id="fName"/></td>
 			</tr>
 			<tr>
