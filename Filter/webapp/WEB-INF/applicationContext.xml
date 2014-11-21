@@ -1,0 +1,51 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+<context:annotation-config />
+<!--   Define data source bean -->
+  <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+  		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"></property>
+  		<property name="url" value="jdbc:oracle:thin:@10.16.44.247:1521:orcl"></property>
+  		<property name="username" value="lb_dev_int_rec"></property>
+  		<property name="password" value="directv"></property>
+  </bean>
+<!--   Define a Session factory         -->
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="annotatedClasses">
+        <list>
+          <value>com.directv.filter.domain.InputType</value>
+          <value>com.directv.filter.domain.OperationType</value>
+           <value>com.directv.filter.domain.Filter</value>
+        </list>
+    </property>
+	</bean>
+	<bean id="filterDAO" class="com.directv.filter.repository.FilterDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="inputTypeDAO" class="com.directv.filter.repository.InputTypeDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean id="operationTypeDAO" class="com.directv.filter.repository.OperationTypeDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean id="filterService" class="com.directv.filter.service.FilterServiceImpl">
+		<property name="filterDAO" ref="filterDAO"></property>
+	</bean>
+	
+	
+	<bean id="inputTypeService" class="com.directv.filter.service.InputTypeServiceImpl">
+		<property name="inputTypeDAO" ref="inputTypeDAO"></property>
+		<property name="dozerMapper" ref="dozerMapper"></property>
+	</bean>
+	<bean id="operationTypeService" class="com.directv.filter.service.OperationTypeServiceImpl">
+		<property name="operationTypeDAO" ref="operationTypeDAO"></property>
+		<property name="dozerMapper" ref="dozerMapper"></property>
+	</bean>
+</beans>

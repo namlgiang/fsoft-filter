@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- applicationContext-aop.xml Copyright (c) 2011 DIRECTV, Inc. An Unpublished 
+	Work. All Rights Reserved. DIRECTV PROPRIETARY: The information contained 
+	in or disclosed by this document is considered proprietary by DIRECTV, Inc. 
+	This document and/or the information contained therein shall not be duplicated 
+	nor disclosed in whole or in part without the specific written permission 
+	of DIRECTV, Inc. -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+
+	<bean id="dozerMapper" class="org.dozer.DozerBeanMapper">
+		<property name="mappingFiles">
+			<list>
+				<value>dozerMapping.xml</value>
+			</list>
+		</property>
+	</bean>
+</beans>
