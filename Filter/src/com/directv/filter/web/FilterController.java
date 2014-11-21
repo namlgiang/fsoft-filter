@@ -9,7 +9,7 @@ import com.directv.filter.dto.FilterDTO;
 
 @RequestMapping("/filterAction")
 public interface FilterController {
-    @RequestMapping(method=RequestMethod.POST,value="/add")
+    @RequestMapping(method=RequestMethod.POST,value="/add",headers = {"Content-type=application/json"})
     public ModelAndView addFilter(FilterDTO filterDTO);
     
     @RequestMapping(method=RequestMethod.GET,value="/show")

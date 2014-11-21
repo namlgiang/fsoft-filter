@@ -6,12 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.directv.filter.dto.FilterDTO;
 import com.directv.filter.dto.InputTypeDTO;
 import com.directv.filter.dto.OperationTypeDTO;
+import com.directv.filter.service.FilterService;
 import com.directv.filter.service.InputTypeService;
 import com.directv.filter.service.OperationTypeService;
 import com.directv.filter.web.FilterController;
@@ -23,9 +24,11 @@ public class FilterControllerImpl implements FilterController{
     private InputTypeService inputTypeService;
     @Autowired
     private OperationTypeService operationTypeService;
-    
+    @Autowired
+    private FilterService filterService;
     @Override
-    public ModelAndView addFilter(@ModelAttribute("filterDTO") FilterDTO filterDTO) {
+    public ModelAndView addFilter(@RequestBody FilterDTO filterDTO) {
+	filterService.addFilter(filterDTO);
 	return null;
     }
     

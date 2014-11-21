@@ -37,6 +37,7 @@
 	
 	<bean id="filterService" class="com.directv.filter.service.FilterServiceImpl">
 		<property name="filterDAO" ref="filterDAO"></property>
+		<property name="dozerMapper" ref="dozerMapper"></property>
 	</bean>
 	
 	

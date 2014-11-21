@@ -1,12 +1,24 @@
 /**
- * 
+ * Java script function for filter tool
  */
 
  $( document ).ready(function() {
 	$('#btnSave').click(function() {
-		alert('zzzzz');
+		var filter = addFilter();
+		createFilterSubmitForm();
+		$('#filterData').val(JSON.stringify(filter));
+		$('#filterForm').submit();
+		
 	});
 });
+ function createFilterSubmitForm() {
+		var form = $('<form id="filterForm"></form>').attr({
+			method : 'POST',
+			action : '/Filter/filterAction/add'
+		}).appendTo('body');
+		$('<input type="hidden" id="filterData" name="filterData" />').appendTo(form);
+	} 
+ 
 function addFilter() {
 	var filterType = null;
 	var temp = '';
